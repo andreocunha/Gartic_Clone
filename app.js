@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const http = require('http')
-
+const port = process.env.PORT || 3333;
 const server = http.createServer(app) // esse server é quem o socket.io vai ficar ouvindo
 
 const socketIo = require('socket.io')
@@ -12,9 +12,9 @@ app.get('/', function(req, res){
   res.send('server is running');
 });
 
-server.listen(3000,() => {
-    console.log("running")
-})
+// server.listen(3000,() => {
+//     console.log("running")
+// })
 
 app.use(express.static(__dirname + "/public"))
 
@@ -40,3 +40,5 @@ io.on('connection', (socket) => {
         io.emit('limpar')
     })
 })
+
+server.listen(port, () => console.log("server running on port:" + port));
