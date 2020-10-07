@@ -8,6 +8,10 @@ const socketIo = require('socket.io')
 
 const io = socketIo.listen(server)
 
+app.get('/', function(req, res){
+  res.send('server is running');
+});
+
 server.listen(3000,() => {
     console.log("running")
 })
