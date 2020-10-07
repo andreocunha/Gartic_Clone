@@ -12,7 +12,7 @@ server.listen(3000,() => {
     console.log("running")
 })
 
-// app.use(express.static(__dirname + "/public"))
+app.use(express.static(__dirname + "/public"))
 
 const historico = []
 
