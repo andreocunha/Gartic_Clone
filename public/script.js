@@ -29,9 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     tela.onmousedown = (evento) => { pincel.ativo = true }
+    tela.ontouchstart = (evento) => { pincel.ativo = true }
+    
     tela.onmouseup = (evento) => { pincel.ativo = false }
+    tela.ontouchend = (evento) => { pincel.ativo = false }
 
     tela.onmousemove = (evento) => { 
+        pincel.pos.x = evento.clientX
+        pincel.pos.y = evento.clientY
+        pincel.movendo = true
+    }
+
+    tela.ontouchmove = (evento) => { 
         pincel.pos.x = evento.clientX
         pincel.pos.y = evento.clientY
         pincel.movendo = true
