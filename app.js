@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const http = require('http')
-const port = process.env.PORT || 3000;
 
 const server = http.createServer(app) // esse server é quem o socket.io vai ficar ouvindo
 
@@ -9,15 +8,11 @@ const socketIo = require('socket.io')
 
 const io = socketIo.listen(server)
 
-server.listen(port, function(){
-    console.log('listening on *:' + port);
-  });
+server.listen(3000,() => {
+    console.log("running")
+})
 
-// app.use(express.static(__dirname + "/public"))
-
-app.get('/', function(req, res){
-    res.sendFile(__dirname + '/public/index.html');
-});
+app.use(express.static(__dirname + "/public"))
 
 const historico = []
 
